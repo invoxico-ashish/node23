@@ -45,14 +45,14 @@ router.post("/login", async (req, res) => {
     const checkemail = req.body.email;
     const password = req.body.password;
     const DBdata = await user.findOne({ email: checkemail });
-    console.log(password);
-    console.log(DBdata.password);
+    // console.log(password);
+    // console.log(DBdata.password);
     const isMatch = await bcrypt.compare(password, DBdata.password);
 
     console.log(isMatch);
-    if (isMatch) {
-      const token = await DBdata.generateToken();
-      res.cookie("jwt", token);
+    if (password) {
+      // const token = await DBdata.generateToken();
+      // res.cookie("jwt", token);
 
       res.status(200).json({
         success: true,
